@@ -1,0 +1,34 @@
+<% for item in @populars %>
+
+<div class="span3" >
+	<div class="photos">
+	<div class="photo_information">
+		<div class="photo_user">
+			<a href="#"><img src="<%= item.user.profile_picture %>" ></a>	
+		</div>
+		<div class="name_user">
+			<strong>
+				<a href="#"><%= item.user.username %></a>
+			</strong>
+			<br>
+			<span><%= item.user.full_name %></span>
+		</div>	
+	</div>
+	<div class="photo">
+		<a href="<%= photos_url + '/' + item.id %>">
+			<img src="<%= item.images.low_resolution.url %>">
+		</a>	
+	</div>
+	<div class="photo_like">
+		<i class="icon-heart"><strong> <%= item.likes['count'] %></strong></i>
+		<strong>-</strong>
+		<i class="icon-comment"><strong> <%= item.comments['count'] %></strong></i>
+	</div>
+	<span class="post_time"><%= time_ago_in_words Time.at(item.created_time.to_i) %> ago</span>
+	<strong>/</strong>
+	<span class="filter"><%= item.filter %></span>
+	</div>
+</div>
+	
+<% end %>
+
